@@ -21,7 +21,7 @@ if (isset($_POST['file'])) {
   }
 
   if (unlink($full_path) == false) {
-    header("Location: ftpgui.php?error=nofile&" . $full_path);
+    header("Location: ftpgui.php?error=nofile");
     exit;
   }
 

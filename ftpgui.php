@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Take the user straight to the file upload screen if they've already logged in.
+// Take the user to the login screen if the user has yet to log in.
 if (!$_SESSION['logged_in']) {
 	header("Location: login.php");
 	exit;
@@ -53,18 +53,21 @@ if (!$_SESSION['logged_in']) {
 			<h2>Personal Files</h2>
 			<?php
 			$username = $_SESSION['username'];
+			// Get the files from the user's directory.
 			$files = scandir("../server_data/users/" . $username);
 			if ($files == FALSE || count($files) == 0) {
 				printf("No files found.");
 			}
 			else {
 				echo "<form action='delete.php' method='POST'>";
+				// Print out each file from the directory.
 				foreach ($files as $file) {
 					if (!is_dir("../server_data/users/" . $username . "/" . $file)) {
-						printf("<input type='radio' name='file' value='" . $username . "/" . $file . "'>");
+						printf("<input type='radio' name='file' value='%s/%s'>", $username, $file);
 						printf("<a href='download.php?file=%s&visibility=%s'>%s</a><br>", $file, "private", $file);
 					}
 				}
+				// Pass along the token to protect from cross-site attacks when deleting files.
 				$token = "<input type='hidden' name='token' value='" . $_SESSION['token'] . "' />";
 				echo "<br>";
 				echo "<input type='hidden' name='visibility' value='private'>";
@@ -78,18 +81,21 @@ if (!$_SESSION['logged_in']) {
 			if (isset($_SESSION['group'])) {
 				$username = $_SESSION['username'];
 				$group = $_SESSION['group'];
+				// Get the files from the group directory.
 				$files = scandir("../server_data/groups/" . $group);
 				if ($files == FALSE || count($files) == 0) {
 					echo "No files found.";
 				}
 				else {
 					echo "<form action='delete.php' method='POST'>";
+					// Print out each file from the group directory.
 					foreach ($files as $file) {
 						if (!is_dir("../server_data/groups/" . $group . "/" . $file)) {
 							printf("<input type = 'radio' name = 'file' value = '%s/%s'>",  $group,  $file);
 							printf("<a href = 'download.php?file=%s&visibility=%s'>%s</a><br>", $file, "group", $file);
 						}
 					}
+					// Check that the token of this user is the same as the token of the logged in user.
 					$token = "<input type='hidden' name='token' value='" . $_SESSION['token'] . "' />";
        				echo "<br>";
 					echo "<input type='hidden' name='visibility' value='group'>";
@@ -104,18 +110,21 @@ if (!$_SESSION['logged_in']) {
 			<hr>
 			<h2>Public Files</h2>
 			<?php
+			// Get the files from the public directory.
 			$files = scandir("../server_data/public");
         	if ($files == FALSE || count($files) == 0) {
           		echo "No files found.";
         	}
         	else {
           		echo "<form action='delete.php' method='POST'>";
+          		// Print out each file from the public directory.
           		foreach ($files as $file) {
             		if (!is_dir("../server_data/public/" . $file)) {
               			printf("<input type = 'radio' name = 'file' value = '%s'>", $file);
               			printf("<a href = 'download.php?file=%s&visibility=%s'>%s</a><br>", $file, "public", $file);
             		}
           		}
+          		// Check that the token of this user is the same as the token of the logged in user.
           		$token = "<input type='hidden' name='token' value='" . $_SESSION['token'] . "' />";
           		echo "<br>";
 				echo "<input type='hidden' name='visibility' value='public'>";
@@ -131,6 +140,7 @@ if (!$_SESSION['logged_in']) {
 				echo "You are currently a member of " . $_SESSION['group'];
 			}
 			?>
+			<br>
 			<form action="join_group.php" method="POST">
 				Group name:<input type="text" name="group"><br>
 				<input type="submit" value="Join!">
