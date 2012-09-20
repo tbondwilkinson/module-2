@@ -12,7 +12,10 @@ if (!$_SESSION['logged_in']) {
 	<title>cse330 File Manager</title>
 </head>
 <body>
-	<h1>Your Humble cse330 File Manager</h1>
+	<h1>Your Humble CSE330 File Manager</h1>
+	<div>
+		You are currently logged in as <?$_SESSION['username'];?>.
+	</div>
 	<div id="error">
 		<?php
 			// Error handling

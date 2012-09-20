@@ -8,8 +8,8 @@
 		<p>
 			<?php
 				if (isset($_GET['attempts'])) {
-					if (isset($_GET['name'])) {
-						echo "Invalid username: " . $_GET['name'] . "<br";
+					if (isset($_GET['username'])) {
+						echo "Invalid username: " . $_GET['username'] . "<br";
 					}
 					else {
 						echo "Invalid username<br>";
