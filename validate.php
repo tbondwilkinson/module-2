@@ -11,8 +11,8 @@ if (isset($_POST['username'])) {
 		$_SESSION['username'] = $_POST['username'];
 		$_SESSION['token'] = md5(uniqid(rand(), true));
 		// Check to see if the user is in a group.
-		if (file_exists("../server_data/users/" . $_POST['username'] . "/group.txt")) {
-    		$group = file_get_contents("../server_data/users/" . $_POST['username'] . "/group.txt");
+		if (file_exists("../server_data/users/" . $_POST['username'] . "/group/group.txt")) {
+    		$group = file_get_contents("../server_data/users/" . $_POST['username'] . "group/group.txt");
   			$_SESSION['group'] = $group;
 		}
 		header("Location: ftpgui.php");

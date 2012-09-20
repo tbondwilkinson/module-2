@@ -11,6 +11,7 @@ else {
 	$usernames = fopen($usernames_file, 'a') or die("can't open file");
 	fwrite($usernames, "\n" .  "[" . $_POST['username'] . "]");
 	mkdir("../server_data/users/" . $_POST['username']);
+	mkdir("../server_data/users/" . $_POST['username'] . "/group");
 	header("Location: ftpgui.php");
 	exit;
 }
