@@ -14,7 +14,7 @@ if (!$_SESSION['logged_in']) {
 <body>
 	<h1>Your Humble CSE330 File Manager</h1>
 	<div>
-		You are currently logged in as <?$_SESSION['username'];?>.
+		You are currently logged in as <?echo $_SESSION['username'];?>.
 	</div>
 	<div id="error">
 		<?php
