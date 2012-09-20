@@ -72,6 +72,7 @@ if (!$_SESSION['logged_in']) {
 				}
 				// Pass along the token to protect from cross-site attacks when deleting files.
 				$token = "<input type='hidden' name='token' value='" . $_SESSION['token'] . "' />";
+				echo $token;
 				echo "<br>";
 				echo "<input type='hidden' name='visibility' value='private'>";
 				echo "<input type='submit' value='Delete'>";
@@ -100,6 +101,7 @@ if (!$_SESSION['logged_in']) {
 					}
 					// Check that the token of this user is the same as the token of the logged in user.
 					$token = "<input type='hidden' name='token' value='" . $_SESSION['token'] . "' />";
+					echo $token;
        				echo "<br>";
 					echo "<input type='hidden' name='visibility' value='group'>";
         			echo "<input type='submit' value='Delete'>";
@@ -129,6 +131,7 @@ if (!$_SESSION['logged_in']) {
           		}
           		// Check that the token of this user is the same as the token of the logged in user.
           		$token = "<input type='hidden' name='token' value='" . $_SESSION['token'] . "' />";
+          		echo $token;
           		echo "<br>";
 				echo "<input type='hidden' name='visibility' value='public'>";
           		echo "<input type='submit' value='Delete'>";
