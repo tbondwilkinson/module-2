@@ -14,7 +14,7 @@ if (!$_SESSION['logged_in']) {
 <body>
 	<h1>Your Humble CSE330 File Manager</h1>
 	<div>
-		You are currently logged in as <?echo $_SESSION['username'];?>.
+		You are currently logged in as <b><?echo $_SESSION['username'];?></b>.
 	</div>
 	<div id="error">
 		<?php
@@ -45,8 +45,8 @@ if (!$_SESSION['logged_in']) {
 				<input type="hidden" name="token" value="<?=$_SESSION['token'];?>" />
 				<select name="visibility">
 					<option value="private">Private</option>
-					<option value="public">Public</option>
 					<option value="group">Group</option>
+					<option value="public">Public</option>
 				</select>
 				<input type="submit" value="Upload File" />
 			</form>

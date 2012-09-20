@@ -19,7 +19,7 @@ if (isset($_POST['username'])) {
 		exit;
 	}
 	else {
-		header("Location: login.php?attempts=1&username=" . $username);
+		header("Location: login.php?attempts=1&username=" . $_POST['username']);
 		exit;
 	}
 }
