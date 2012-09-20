@@ -53,7 +53,7 @@ if (!$_SESSION['logged_in']) {
 		</div>
 		<hr>
 		<div id="fupload-filenames">
-			<h2>Personal Files</h2>
+			<h2>Private Files</h2>
 			<?php
 			$username = $_SESSION['username'];
 			// Get the files from the user's directory.

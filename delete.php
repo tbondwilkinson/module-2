@@ -4,7 +4,7 @@ if (isset($_POST['file'])) {
   // Check to make sure the token that this user has is 
   // still the same one we gave them before.
   if ($_SESSION['token'] !== $_POST['token']) {
-    header("Location: ftpgui.php?error=invalid_token");
+    header("Location: ftpgui.php?error=invalid_token&" . $_SESSION['token'] . ":" . $_POST['token']);
     exit;
   }
 
