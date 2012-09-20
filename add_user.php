@@ -4,7 +4,9 @@
 </head>
 <body>
 <?php
-if (isset($_GET['error']) ){
+// If the username is already taken, register.php
+// will send the user back to this page with an error.
+if (isset($_GET['error'])) {
   if ($_GET['error'] == "taken") {
     echo "That username is taken.";
   }

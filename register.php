@@ -1,7 +1,7 @@
 <?php
 
 $h = file_get_contents("../server_data/users.txt");
-if(strpos($h, '[' . $_POST['username'] . ']' ) !== false) {
+if (strpos($h, '[' . $_POST['username'] . ']' ) !== false) {
 	header("Location: add_user.php?error=taken");
 }
 else {

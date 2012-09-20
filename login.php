@@ -7,7 +7,7 @@
 	<form action="validate.php" method="post">
 		<p>
 			<?php
-				if(isset($_GET['attempts'])) {
+				if (isset($_GET['attempts'])) {
 					echo "Invalid username<br>";
 				}
 				else {
